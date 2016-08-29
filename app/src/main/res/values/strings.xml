@@ -1,0 +1,11 @@
+<resources>
+    <string name="app_name">CustomerManager</string>
+    <string name="logged_in">Your are logged in</string>
+    <string name="failed_login">Please try again </string>
+    <string name="user_name">Jdoe</string>
+    <string name="password">welcome1</string>
+    <string name="title_activity_login">Sign in</string>
+    <string name="title_activity_signin">SigninActivity</string>
+
+
+</resources>
