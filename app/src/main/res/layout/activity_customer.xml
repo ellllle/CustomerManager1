@@ -1,43 +1,70 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+              xmlns:tools="http://schemas.android.com/tools"
               android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:gravity="center"
+              android:layout_height="wrap_content"
               android:orientation="vertical"
-              android:weightSum="1">
+              android:weightSum="1"
+              android:gravity="center_vertical"
+    >
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nav_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+    <fragment
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_weight="1"
+        android:id="@+id/fr_login"
+        android:name="com.bignerdranch.android.customermanager.FragmentLogIn"
+        tools:layout="@layout/fragment_login"
+        android:layout_marginBottom="10dp">
 
-    <ImageView
-        android:layout_width="200dp"
-        android:layout_height="wrap_content"
-        android:id="@+id/imageView"
-        android:src="@drawable/main_logo"
-        android:layout_gravity="center_horizontal"
-        android:layout_weight="0.40"/>
+    </fragment>
 
     <TextView
-        android:text="Easy to mange your business"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/description_text"
-        android:textSize="25dp"
-        android:layout_gravity="center"/>
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="Client's List"
+        android:id="@+id/listTextView"
+        android:textAlignment="center"
+        android:layout_gravity="top"
+        android:layout_marginBottom="10dp"/>
 
-
-    <TextView
-        android:text="Plese sign in or regester"
+    <ListView
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:padding="20dp"
-        android:id="@+id/signin_text"
-        android:textSize="25dp"
-        android:layout_gravity="center"/>
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="login"
-        android:id="@+id/login_button"
-        android:drawablePadding="25dp"/>
+        android:layout_height="350dp"
+        android:id="@+id/listView"
+        />
 
+    <LinearLayout
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:weightSum="1"
+        android:gravity="fill_horizontal"
+        android:layout_gravity="center_horizontal">
 
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Add New Customer"
+            android:id="@+id/newCustomerButton"
+            android:layout_gravity="right"
+            android:layout_marginLeft="10dp"/>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Show Profile"
+            android:id="@+id/profile_button"
+            android:layout_weight="0.64"/>
+    </LinearLayout>
 
 </LinearLayout>
