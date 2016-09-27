@@ -1,6 +1,8 @@
 package com.bignerdranch.android.customermanager;
 
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.ActionBar;
 import android.support.v7.app.ActionBarActivity;
 import android.support.v7.app.AppCompatActivity;
@@ -18,6 +20,12 @@ public class CustomerActivity extends AppCompatActivity {
 
     private static Button show_profile;
     private static Button new_customer;
+    ListView myList;
+    SQLiteDatabase database;
+    CustomerDbHandler customerDbHandler;
+    Cursor cursor;
+    CustomerListAdapter customerListAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -28,6 +36,29 @@ public class CustomerActivity extends AppCompatActivity {
 
         setUpNewCustomerBtn();
         setUpProfileBtn();
+
+        myList = (ListView) findViewById(R.id.customerList);
+        customerDbHandler = new CustomerDbHandler(getApplicationContext());
+        database = customerDbHandler.getReadableDatabase();
+        cursor = customerDbHandler.getCustomerInfo(database);
+        customerListAdapter = new CustomerListAdapter(getApplicationContext(), R.layout.row_info);
+        myList.setAdapter(customerListAdapter);
+
+        if(cursor.moveToFirst())
+        {
+            do{
+                String first, last, sessions;
+                first = cursor.getString(1);
+                last = cursor.getString(2);
+                sessions = cursor.getString(3);
+                InformationList informationList = new InformationList(first, last, sessions);
+                customerListAdapter.add(informationList);
+
+            }while(cursor.moveToNext());
+
+        }
+
+
 
     }
 
