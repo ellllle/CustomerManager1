@@ -1,15 +1,14 @@
 package com.bignerdranch.android.customermanager;
 
 import android.content.Intent;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.ActionBarActivity;
-import android.support.v7.app.AppCompatActivity;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -18,6 +17,12 @@ public class CustomerActivity extends AppCompatActivity {
 
     private static Button show_profile;
     private static Button new_customer;
+    ListView listView;
+    SQLiteDatabase sqLiteDatabase;
+    CustomerBaseHelper customerBaseHelper;
+    Cursor cursor;
+    ListDataAdappter listDataAdappter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,6 +30,28 @@ public class CustomerActivity extends AppCompatActivity {
 
         Toolbar navToolBar = (Toolbar)findViewById(R.id.nav_toolbar);
         setSupportActionBar(navToolBar);
+
+        listView = (ListView) findViewById(R.id.listView);
+        listDataAdappter = new ListDataAdappter(getApplicationContext(), R.layout.rowinfo);
+        listView.setAdapter(listDataAdappter);
+        customerBaseHelper = new CustomerBaseHelper(getApplicationContext());
+        sqLiteDatabase = customerBaseHelper.getReadableDatabase();
+        cursor = customerBaseHelper.getCustomerInfo(sqLiteDatabase);
+        if(cursor.moveToFirst() )
+        {
+            do{
+                String fname, lname,sessions;
+                fname = cursor.getString(0);
+                lname = cursor.getString(1);
+                sessions = cursor.getString(2);
+                DataProvider dataProvider = new DataProvider(fname, lname,sessions);
+                listDataAdappter.add(dataProvider);
+
+            }while(cursor.moveToNext());
+
+
+        }
+
 
         setUpNewCustomerBtn();
         setUpProfileBtn();
