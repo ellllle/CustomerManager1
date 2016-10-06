@@ -72,7 +72,6 @@ public class NewCustomerActivity extends AppCompatActivity {
                 startActivity(intent);
                 return true;
             case R.id.Home_menu_item:
-                Toast.makeText(NewCustomerActivity.this, "the picture was saved at", Toast.LENGTH_SHORT).show();
                 Intent homeIntent = new Intent(this, CustomerActivity.class);
                 startActivity(homeIntent);
                 return true;
