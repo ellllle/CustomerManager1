@@ -16,6 +16,12 @@ public class DataProvider {
         this.session = session;
     }
 
+    public DataProvider(String first, String last){
+        this.first = first;
+        this.last = last;
+
+    }
+
     public void setFirst(String first) {
         this.first = first;
     }

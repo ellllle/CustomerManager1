@@ -9,4 +9,11 @@
         >
     </item>
 
+    <item
+        android:id="@+id/Home_menu_item"
+        android:title="@string/Home"
+        app:showAsAction="ifRoom"
+        >
+    </item>
+
 </menu>

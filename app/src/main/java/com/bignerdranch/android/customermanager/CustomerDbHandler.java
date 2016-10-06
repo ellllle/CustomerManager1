@@ -3,7 +3,6 @@ package com.bignerdranch.android.customermanager;
 import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
-import android.database.CursorWrapper;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -35,7 +34,7 @@ public class CustomerDbHandler extends SQLiteOpenHelper {
 
         @Override
     public void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL("DROP TABLE IF EXISTS" +  Customers.NewCustomer.TABLE_NAME);
+        db.execSQL("DROP TABLE IF EXISTS" +  Customers.NAME);
         onCreate(db);
 
     }
@@ -45,7 +44,7 @@ public class CustomerDbHandler extends SQLiteOpenHelper {
         values.put(Customers.NewCustomer.FIRST_NAME,fname);
         values.put(Customers.NewCustomer.LAST_NAME,lname);
         values.put(Customers.NewCustomer.SESSIONS, sessions);
-        db.insert(Customers.NewCustomer.TABLE_NAME, null, values);
+        db.insert(Customers.NAME, null, values);
         db.close();
     }
 

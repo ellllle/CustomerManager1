@@ -10,6 +10,7 @@
     <string name="title_activity_new_customer">NewCustomerActivity</string>
     <string name="title_activity_payment">PaymentActivity</string>
     <string name="Log_Off">Log Off</string>
+    <string name="Home">Home</string>
 
 
 </resources>

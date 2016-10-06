@@ -8,6 +8,16 @@
     android:weightSum="1"
     android:gravity="center_vertical">
 
+    <android.support.v7.widget.Toolbar
+        android:id="@+id/nav_toolbar"
+        android:layout_width="match_parent"
+        android:layout_height="?attr/actionBarSize"
+        android:background="?attr/colorPrimary"
+        android:elevation="4dp"
+        android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
+        android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
+        />
+
     <fragment
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -52,7 +62,7 @@
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
-        android:layout_height="150dp"
+        android:layout_height="108dp"
         android:gravity="right"
         android:layout_marginTop="20dp">
 
@@ -60,7 +70,9 @@
             android:orientation="vertical"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            >
+            android:paddingRight="120dp"
+            android:gravity="left"
+            android:layout_gravity="left">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -68,16 +80,21 @@
                 android:text="Sessions: "
                 android:id="@+id/textSessions"/>
 
-            <ListView
-                android:layout_width="190dp"
-                android:layout_height="200dp"
-                android:id="@+id/listView2"/>
+
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/totalSessions" />
+
         </LinearLayout>
 
         <LinearLayout
             android:orientation="vertical"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content">
+            android:layout_width="150dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="right"
+            android:paddingLeft="30dp">
 
             <TextView
                 android:layout_width="wrap_content"
@@ -86,10 +103,12 @@
                 android:id="@+id/textCompleted"
                 />
 
-            <ListView
-                android:layout_width="190dp"
-                android:layout_height="200dp"
-                android:id="@+id/listView3"/>
+            <TextView
+                android:text="TextView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:id="@+id/completedSessions" />
+
         </LinearLayout>
     </LinearLayout>
 
